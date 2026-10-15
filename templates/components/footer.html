@@ -1,0 +1,162 @@
+<footer class="bookstore-footer">
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <!-- BookNest -->
+            <div class="col-lg-5">
+
+                <a href="{{ url_for('home') }}" class="footer-brand">
+                    <i class="bi bi-book-half me-2"></i>
+                    BookNest
+                </a>
+
+                <p class="footer-description">
+                    Your little corner for great books. Discover new stories,
+                    explore different genres, and find books worth reading.
+                </p>
+
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="X">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
+
+                    <a href="#" aria-label="GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
+                </div>
+
+            </div>
+
+
+            <!-- Discover -->
+            <div class="col-6 col-lg-2">
+
+                <h5>Discover</h5>
+
+                <ul class="footer-links">
+                    <li>
+                        <a href="{{ url_for('home') }}">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('home') }}#books">Books</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('home') }}#books">Categories</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('home') }}">About BookNest</a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- Account -->
+            <div class="col-6 col-lg-2">
+
+                <h5>Account</h5>
+
+                <ul class="footer-links">
+
+                    {% if session.get("user_id") %}
+
+                        <li>
+                            <a href="{{ url_for('profile') }}">
+                                My Profile
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url_for('add_book') }}">
+                                Add Book
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url_for('logout') }}">
+                                Logout
+                            </a>
+                        </li>
+
+                    {% else %}
+
+                        <li>
+                            <a href="{{ url_for('login') }}">
+                                Login
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url_for('register') }}">
+                                Create Account
+                            </a>
+                        </li>
+
+                    {% endif %}
+
+                </ul>
+
+            </div>
+
+
+            <!-- Contact -->
+            <div class="col-lg-3">
+
+                <h5>Get in Touch</h5>
+
+                <ul class="footer-contact">
+
+                    <li>
+                        <i class="bi bi-envelope"></i>
+                        <span>support@booknest.com</span>
+                    </li>
+
+                    <li>
+                        <i class="bi bi-telephone"></i>
+                        <span>+91 98765 43210</span>
+                    </li>
+
+                    <li>
+                        <i class="bi bi-geo-alt"></i>
+                        <span>New Delhi, India</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+
+            <p>
+                &copy;
+                <span id="currentYear"></span>
+                BookNest. All Rights Reserved.
+            </p>
+
+            <p>
+                <i class="bi bi-book-heart me-1"></i>
+                Made for book lovers.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>

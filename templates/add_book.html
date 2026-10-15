@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Add Book - BookNest
+{% endblock %}
+
+{% block content %}
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-5">
+              <h2 class="fw-bold mb-1">Add New Book</h2>
+
+              <p class="text-muted mb-4">Add a new book to your BookNest collection.</p>
+
+              <form method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Book Title</label>
+
+                  <input type="text" name="title" class="form-control" placeholder="Enter book title" required />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Author</label>
+
+                  <input type="text" name="author" class="form-control" placeholder="Enter author name" required />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Price (₹)</label>
+
+                  <input type="number" name="price" class="form-control" step="0.01" min="0" placeholder="Enter price" required />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Category</label>
+
+                  <input type="text" name="category" class="form-control" placeholder="e.g. Fiction, Programming, History" />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Description</label>
+
+                  <textarea name="description" class="form-control" rows="4" placeholder="Enter book description"></textarea>
+                </div>
+
+                <!-- Book Image -->
+                <div class="mb-4">
+                  <label class="form-label fw-semibold">Book Cover</label>
+
+                  <input type="file" name="image" class="form-control" accept=".jpg,.jpeg,.png,.webp" />
+
+                  <small class="text-muted">JPG, JPEG, PNG or WEBP</small>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-plus-lg me-1"></i>
+                  Add Book
+                </button>
+
+                <a href="{{ url_for('profile') }}" class="btn btn-outline-secondary">Cancel</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

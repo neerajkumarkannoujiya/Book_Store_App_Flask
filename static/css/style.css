@@ -1,0 +1,710 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+:root {
+    --primary: #6c4cff;
+    --primary-dark: #5135d4;
+    --dark: #171321;
+    --text: #333333;
+    --muted: #777777;
+    --light-bg: #f7f7fb;
+    --white: #ffffff;
+    --border: #e5e5e5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    background: var(--light-bg);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.bookstore-navbar {
+    background: #171321;
+    padding: 14px 0;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.12);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.brand-name {
+    letter-spacing: 0.3px;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+    padding: 8px 15px !important;
+    transition: 0.2s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: white;
+}
+
+.register-nav-btn {
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.register-nav-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-section {
+    padding: 90px 0;
+    background:
+        radial-gradient(circle at 90% 20%, rgba(108, 76, 255, 0.18), transparent 35%),
+        linear-gradient(135deg, #ffffff, #f3f1ff);
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 50px;
+    background: #eeeaff;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.hero-section h1 {
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.05;
+    font-weight: 800;
+    color: var(--dark);
+}
+
+.hero-section h1 span {
+    color: var(--primary);
+}
+
+.hero-section p {
+    max-width: 570px;
+    margin: 20px 0 30px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.auth-btn {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover,
+.auth-btn:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+
+/* =========================================================
+   HERO BOOK
+========================================================= */
+
+.hero-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-cover {
+    width: 250px;
+    height: 340px;
+    border-radius: 8px 15px 15px 8px;
+    background: linear-gradient(145deg, #6c4cff, #34209b);
+    color: white;
+    padding: 40px 30px;
+    box-shadow:
+        15px 20px 35px rgba(0, 0, 0, 0.25),
+        inset 8px 0 rgba(0, 0, 0, 0.12);
+    transform: rotate(4deg);
+    text-align: center;
+}
+
+.book-cover i {
+    font-size: 50px;
+}
+
+.book-cover h3 {
+    margin-top: 35px;
+    font-size: 30px;
+    line-height: 1.2;
+}
+
+.book-cover span {
+    display: block;
+    margin-top: 45px;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   BOOK SECTION
+========================================================= */
+
+.books-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 40px;
+}
+
+.section-label {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    font-size: 36px;
+    font-weight: 750;
+    margin: 5px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    margin: 0;
+}
+
+
+/* =========================================================
+   BOOK CARD
+========================================================= */
+
+.book-card {
+    height: 100%;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: white;
+    overflow: hidden;
+    transition: all 0.25s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.book-image {
+    height: 230px;
+    background: linear-gradient(135deg, #eeeaff, #e3ddff);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-placeholder {
+    width: 125px;
+    height: 170px;
+    border-radius: 5px;
+    background: linear-gradient(145deg, #6c4cff, #3820a5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    box-shadow: 8px 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.book-category {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 5px 10px;
+    background: white;
+    color: var(--primary);
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.book-info {
+    padding: 20px;
+}
+
+.book-info h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.book-author {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.book-description {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 40px;
+}
+
+.book-footer {
+    border-top: 1px solid #eeeeee;
+    margin-top: 15px;
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.book-footer strong {
+    color: var(--primary);
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   EMPTY BOOKS
+========================================================= */
+
+.empty-books {
+    text-align: center;
+    padding: 70px 20px;
+    color: var(--muted);
+}
+
+.empty-books i {
+    font-size: 55px;
+    color: #bbb;
+}
+
+.empty-books h3 {
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features-section {
+    padding: 70px 0;
+    background: #f7f7fb;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    height: 100%;
+    border: 1px solid #eeeeee;
+}
+
+.feature-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eeeaff;
+    color: var(--primary);
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+.feature-card h4 {
+    font-weight: 700;
+}
+
+.feature-card p {
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   AUTH PAGES
+========================================================= */
+
+.auth-section {
+    min-height: calc(100vh - 72px);
+    padding: 70px 0;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(108, 76, 255, 0.13), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(118, 75, 162, 0.12), transparent 30%),
+        #f7f7fb;
+}
+
+.auth-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eeeeee;
+}
+
+.auth-card h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 750;
+    color: var(--dark);
+    margin-bottom: 7px;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+.auth-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    background: #eeeaff;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.input-group-text {
+    background: #fafafa;
+    border-right: none;
+    color: var(--primary);
+}
+
+.form-control {
+    padding: 11px 13px;
+    border-left: none;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.15rem rgba(108, 76, 255, 0.15);
+}
+
+.input-group:focus-within .input-group-text {
+    border-color: var(--primary);
+}
+
+.auth-btn {
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+}
+
+.forgot-link {
+    font-size: 13px;
+    color: var(--primary);
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eeeeee;
+}
+
+.auth-divider span {
+    padding: 0 12px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.auth-bottom-text {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
+.auth-bottom-text a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.password-toggle {
+    border-left: none;
+}
+
+/* =========================
+   BOOKNEST FOOTER
+========================= */
+
+.bookstore-footer {
+    background: #111827;
+    color: #d1d5db;
+    padding: 60px 0 20px;
+    margin-top: 60px;
+}
+
+.footer-brand {
+    display: inline-flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.footer-brand:hover {
+    color: #ffffff;
+}
+
+.footer-description {
+    max-width: 430px;
+    line-height: 1.7;
+    color: #9ca3af;
+    margin-bottom: 20px;
+}
+
+.bookstore-footer h5 {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.footer-links,
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    padding-left: 3px;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #9ca3af;
+    margin-bottom: 14px;
+}
+
+.footer-contact i {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-top: 3px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-links a {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #374151;
+    border-radius: 50%;
+    color: #d1d5db;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.social-links a:hover {
+    background: #ffffff;
+    color: #111827;
+    border-color: #ffffff;
+}
+
+.footer-bottom {
+    border-top: 1px solid #374151;
+    margin-top: 40px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-bottom i {
+    color: #ffffff;
+}
+
+
+
+
+/* Mobile */
+@media (max-width: 767px) {
+
+    .bookstore-footer {
+        padding: 45px 0 20px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        justify-content: center;
+    }
+
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .navbar-nav {
+        padding: 15px 0;
+    }
+
+    .navbar .btn {
+        margin-top: 5px;
+    }
+
+    .hero-section {
+        padding: 65px 0;
+    }
+
+    .section-heading {
+        align-items: start;
+        gap: 20px;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .hero-section h1 {
+        font-size: 42px;
+    }
+
+    .hero-section p {
+        font-size: 16px;
+    }
+
+    .section-heading {
+        display: block;
+    }
+
+    .section-heading .btn {
+        margin-top: 20px;
+    }
+
+    .auth-card {
+        padding: 25px 20px;
+    }
+
+    .footer-bottom {
+        display: block;
+    }
+
+    .footer-bottom p + p {
+        margin-top: 8px;
+    }
+}
+
+
+
+.book-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.book-placeholder {
+    font-size: 4rem;
+    color: #9ca3af;
+}

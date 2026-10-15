@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  BookNest - Discover Great Books
+{% endblock %}
+
+{% block content %}
+  <!-- Books Section -->
+  <section class="books-section" id="books">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">OUR COLLECTION</span>
+
+          <h2>Popular Books</h2>
+
+          <p>Browse our latest collection of books.</p>
+        </div>
+
+        {% if session.get('user_id') %}
+          <a href="{{ url_for('add_book') }}" class="btn btn-primary">
+            <i class="bi bi-plus-circle me-2"></i>
+            Add Book
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="row g-4">
+        {% if books %}
+          {% for book in books %}
+            <div class="col-sm-6 col-lg-4 col-xl-3">
+              <div class="book-card">
+                <div class="book-image">
+                  {% if book.image %}
+                    <img src="{{ url_for('static', filename='uploads/books/' + book.image) }}" alt="{{ book.title }}" class="book-cover-image" />
+                  {% else %}
+                    <div class="book-placeholder">
+                      <i class="bi bi-book"></i>
+                    </div>
+                  {% endif %}
+
+                  {% if book.category %}
+                    <span class="book-category">{{ book.category }}</span>
+                  {% endif %}
+                </div>
+
+                <div class="book-info">
+                  <h3>{{ book.title }}</h3>
+
+                  <p class="book-author">
+                    <i class="bi bi-person me-1"></i>
+                    {{ book.author }}
+                  </p>
+
+                  {% if book.description %}
+                    <p class="book-description">{{ book.description }}</p>
+                  {% endif %}
+
+                  <div class="book-footer">
+                    <strong>₹{{ '%.2f'|format(book.price) }}</strong>
+
+                    <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <!-- No books -->
+          <div class="col-12">
+            <div class="empty-books">
+              <i class="bi bi-book"></i>
+
+              <h3>No books available</h3>
+
+              <p>There are currently no books in the store.</p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-section">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="bi bi-book-half"></i>
+            </div>
+
+            <h4>Wide Collection</h4>
+
+            <p>Discover books across different genres and categories.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="bi bi-lightning-charge"></i>
+            </div>
+
+            <h4>Easy to Explore</h4>
+
+            <p>Find your favorite books quickly with our simple interface.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="bi bi-shield-check"></i>
+            </div>
+
+            <h4>Secure Account</h4>
+
+            <p>Your account information is protected and securely managed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
