@@ -1,7 +1,7 @@
 import os
 from flask import Flask, session, request, render_template, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
+# from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -293,5 +293,4 @@ def delete_book(id):
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-
     app.run(debug=True)
