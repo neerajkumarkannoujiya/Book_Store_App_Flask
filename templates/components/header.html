@@ -1,77 +1,49 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-    <div class="container">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold fs-4" href="{{ url_for('home') }}"><i class="bi bi-book-half me-2"></i>BookNest</a>
 
-        <!-- Logo -->
-        <a class="navbar-brand fw-bold fs-4" href="{{ url_for('home') }}">
-            <i class="bi bi-book-half me-2"></i>BookNest
-        </a>
+    <!-- Mobile menu button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-        <!-- Mobile menu button -->
-        <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainNavbar"
-                aria-controls="mainNavbar"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <!-- Left/center navigation -->
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link px-3" href="{{ url_for('home') }}"><i class="bi bi-house-door me-1"></i> Home</a>
+        </li>
 
-        <!-- Navbar content -->
-        <div class="collapse navbar-collapse" id="mainNavbar">
+        <li class="nav-item">
+          <a class="nav-link px-3" href="{{ url_for('home') }}#books"><i class="bi bi-book me-1"></i> Books</a>
+        </li>
 
-            <!-- Left/center navigation -->
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        {% if session.get('user_id') %}
+          <li class="nav-item">
+            <a class="nav-link px-3" href="{{ url_for('profile') }}"><i class="bi bi-person-circle me-1"></i> Profile</a>
+          </li>
+        {% endif %}
+      </ul>
 
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="{{ url_for('home') }}">
-                        <i class="bi bi-house-door me-1"></i> Home
-                    </a>
-                </li>
+      <!-- Right side buttons -->
+      <div class="d-flex align-items-center gap-2">
+        {% if session.get('user_id') %}
+          <a href="{{ url_for('logout') }}" class="btn btn-outline-light btn-sm px-3">
+            <i class="bi bi-box-arrow-right me-1"></i>
+            Logout
+          </a>
+        {% else %}
+          <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-sm px-3">
+            <i class="bi bi-box-arrow-in-right me-1"></i>
+            Login
+          </a>
 
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="{{ url_for('home') }}#books">
-                        <i class="bi bi-book me-1"></i> Books
-                    </a>
-                </li>
-
-                {% if session.get("user_id") %}
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="{{ url_for('profile') }}">
-                        <i class="bi bi-person-circle me-1"></i> Profile
-                    </a>
-                </li>
-                {% endif %}
-
-            </ul>
-
-            <!-- Right side buttons -->
-            <div class="d-flex align-items-center gap-2">
-
-                {% if session.get("user_id") %}
-
-                    <a href="{{ url_for('logout') }}" 
-                       class="btn btn-outline-light btn-sm px-3">
-                        <i class="bi bi-box-arrow-right me-1"></i>
-                        Logout
-                    </a>
-
-                {% else %}
-
-                    <a href="{{ url_for('login') }}"
-                       class="btn btn-outline-light btn-sm px-3">
-                        <i class="bi bi-box-arrow-in-right me-1"></i>
-                        Login
-                    </a>
-
-                    <a href="{{ url_for('register') }}"
-                       class="btn btn-primary btn-sm px-3">
-                        <i class="bi bi-person-plus me-1"></i>
-                        Register
-                    </a>
-
-                {% endif %}
-
-            </div>
-        </div>
+          <a href="{{ url_for('register') }}" class="btn btn-primary btn-sm px-3">
+            <i class="bi bi-person-plus me-1"></i>
+            Register
+          </a>
+        {% endif %}
+      </div>
     </div>
+  </div>
 </nav>

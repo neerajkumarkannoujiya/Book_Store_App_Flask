@@ -1,174 +1,97 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Edit Book - BookNest{% endblock %}
+{% block title %}
+  Edit Book - BookNest
+{% endblock %}
 
 {% block content %}
-
-<div class="container py-5">
-
+  <div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-lg-7 col-md-9">
+      <div class="col-lg-7 col-md-9">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4 p-md-5">
+            <div class="text-center mb-4">
+              <i class="bi bi-pencil-square fs-1 text-primary"></i>
 
-            <div class="card border-0 shadow-sm">
+              <h2 class="fw-bold mt-2">Edit Book</h2>
 
-                <div class="card-body p-4 p-md-5">
-
-                    <div class="text-center mb-4">
-                        <i class="bi bi-pencil-square fs-1 text-primary"></i>
-
-                        <h2 class="fw-bold mt-2">
-                            Edit Book
-                        </h2>
-
-                        <p class="text-muted">
-                            Update the details of your book.
-                        </p>
-                    </div>
-
-
-                    <!-- Important: multipart/form-data for image upload -->
-                    <form method="POST" enctype="multipart/form-data">
-
-                        <!-- Title -->
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
-                                Book Title
-                            </label>
-
-                            <input type="text"
-                                   name="title"
-                                   class="form-control"
-                                   value="{{ book.title }}"
-                                   required>
-                        </div>
-
-
-                        <!-- Author -->
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
-                                Author
-                            </label>
-
-                            <input type="text"
-                                   name="author"
-                                   class="form-control"
-                                   value="{{ book.author }}"
-                                   required>
-                        </div>
-
-
-                        <!-- Price -->
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
-                                Price (₹)
-                            </label>
-
-                            <input type="number"
-                                   name="price"
-                                   class="form-control"
-                                   value="{{ book.price }}"
-                                   step="0.01"
-                                   min="0"
-                                   required>
-                        </div>
-
-
-                        <!-- Category -->
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
-                                Category
-                            </label>
-
-                            <input type="text"
-                                   name="category"
-                                   class="form-control"
-                                   value="{{ book.category or '' }}"
-                                   placeholder="e.g. Fiction, Programming">
-                        </div>
-
-
-                        <!-- Description -->
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
-                                Description
-                            </label>
-
-                            <textarea name="description"
-                                      class="form-control"
-                                      rows="4"
-                                      placeholder="Enter book description...">{{ book.description or '' }}</textarea>
-                        </div>
-
-
-                        <!-- Book Image -->
-                        <div class="mb-4">
-
-                            <label class="form-label fw-semibold">
-                                Book Cover
-                            </label>
-
-                            <!-- Current Image -->
-                            {% if book.image %}
-
-                                <div class="mb-3">
-                                    <p class="text-muted small mb-2">
-                                        Current book cover:
-                                    </p>
-
-                                    <img src="{{ url_for('static', filename='uploads/books/' + book.image) }}"
-                                         alt="{{ book.title }}"
-                                         class="edit-book-image">
-                                </div>
-
-                            {% else %}
-
-                                <div class="alert alert-light border mb-3">
-                                    <i class="bi bi-image me-2"></i>
-                                    No book cover uploaded.
-                                </div>
-
-                            {% endif %}
-
-
-                            <!-- Upload New Image -->
-                            <input type="file"
-                                   name="image"
-                                   class="form-control"
-                                   accept=".jpg,.jpeg,.png,.webp">
-
-                            <small class="text-muted">
-                                Select a new image only if you want to
-                                replace the current cover.
-                            </small>
-
-                        </div>
-
-
-                        <!-- Buttons -->
-                        <div class="d-flex gap-2">
-
-                            <button type="submit"
-                                    class="btn btn-primary flex-grow-1">
-                                <i class="bi bi-check-lg me-1"></i>
-                                Update Book
-                            </button>
-
-                            <a href="{{ url_for('profile') }}"
-                               class="btn btn-outline-secondary">
-                                Cancel
-                            </a>
-
-                        </div>
-
-                    </form>
-
-                </div>
-
+              <p class="text-muted">Update the details of your book.</p>
             </div>
 
+            <!-- Important: multipart/form-data for image upload -->
+            <form method="POST" enctype="multipart/form-data">
+              <!-- Title -->
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Book Title</label>
+
+                <input type="text" name="title" class="form-control" value="{{ book.title }}" required />
+              </div>
+
+              <!-- Author -->
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Author</label>
+
+                <input type="text" name="author" class="form-control" value="{{ book.author }}" required />
+              </div>
+
+              <!-- Price -->
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Price (₹)</label>
+
+                <input type="number" name="price" class="form-control" value="{{ book.price }}" step="0.01" min="0" required />
+              </div>
+
+              <!-- Category -->
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Category</label>
+
+                <input type="text" name="category" class="form-control" value="{{ book.category or '' }}" placeholder="e.g. Fiction, Programming" />
+              </div>
+
+              <!-- Description -->
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Description</label>
+
+                <textarea name="description" class="form-control" rows="4" placeholder="Enter book description...">{{ book.description or '' }}</textarea>
+              </div>
+
+              <!-- Book Image -->
+              <div class="mb-4">
+                <label class="form-label fw-semibold">Book Cover</label>
+
+                <!-- Current Image -->
+                {% if book.image %}
+                  <div class="mb-3">
+                    <p class="text-muted small mb-2">Current book cover:</p>
+
+                    <img src="{{ url_for('static', filename='uploads/books/' + book.image) }}" alt="{{ book.title }}" class="edit-book-image" />
+                  </div>
+                {% else %}
+                  <div class="alert alert-light border mb-3">
+                    <i class="bi bi-image me-2"></i>
+                    No book cover uploaded.
+                  </div>
+                {% endif %}
+
+                <!-- Upload New Image -->
+                <input type="file" name="image" class="form-control" accept=".jpg,.jpeg,.png,.webp" />
+
+                <small class="text-muted">Select a new image only if you want to replace the current cover.</small>
+              </div>
+
+              <!-- Buttons -->
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary flex-grow-1">
+                  <i class="bi bi-check-lg me-1"></i>
+                  Update Book
+                </button>
+
+                <a href="{{ url_for('profile') }}" class="btn btn-outline-secondary">Cancel</a>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-
-</div>
-
+  </div>
 {% endblock %}
